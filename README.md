@@ -1,0 +1,2 @@
+# proportionalParametricEQ
+Proportional Parametric Equalizer 
