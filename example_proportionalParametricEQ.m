@@ -1,8 +1,10 @@
-% Proportional parametric graphical EQ as described in
-% V. Välimäki and J. Reiss, "All About Audio Equalization: Solutions and Frontiers," Applied Sciences, vol. 6, no. 5, p. 129, May 2016.
+%% All About Audio Equalization: Solutions and Frontiers
+% by V. Välimäki and J. Reiss, 
+% in Applied Sciences, vol. 6, no. 5, p. 129, May 2016.
+%
+% *Reproduce in Code*
+% (c) Sebastian Jiro Schlecht:  Monday, 7. January 2019
 % 
-% Author: Sebastian J Schlecht
-% Date: 24.03.2017
 
 close all; clear; clc; 
 %% Initialization
@@ -29,7 +31,8 @@ targetInterp = interp1(targetF, targetG, controlFrequencies)';
 
 %% desgin prototype of the biquad sections
 prototypeGain = 10; % dB
-prototypeSOS = proportionalParametricEQ( centerOmega, shelvingOmega, R, prototypeGain * ones(numFreq+1,1) );
+prototypeGainArray = prototypeGain * ones(numFreq+1,1);
+prototypeSOS = proportionalParametricEQ(centerOmega, shelvingOmega, R, prototypeGainArray);
 [G,prototypeH,prototypeW] = probeSOS (prototypeSOS, controlFrequencies, fftLen, fs);
 G = G / prototypeGain; % dB vs control frequencies
 
